@@ -41,3 +41,18 @@ public:
         Node *currentNode = NULL;
 
         search(element, parent, currentNode); //Searches for the element in the tree
+
+        if (parent == NULL)
+        {
+            ROOT = newNode;
+            return;
+        }
+        if (element < parent->info)
+        {
+            parent->leftchild = newNode;
+        }
+        else if (element > parent->info)
+        {
+            parent->rightchild = newNode;
+        }
+    }

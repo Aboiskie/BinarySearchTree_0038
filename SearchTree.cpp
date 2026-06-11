@@ -1,68 +1,41 @@
-#include<iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 
 class Node
-
+{
 public:
     string info;
     Node *leftchild;
     Node *rightchild;
 
-    //Constructor for the node class
-    Node(string 1, Node *1, Node *r)
+    // Constructor for the node class
+    Node(string i, Node *l, Node *r)
     {
-        info = 1;
-        leftchild = 1;
+        info = i;
+        leftchild = l;
         rightchild = r;
     }
 };
 
 class BinaryTree
-
+{
 public:
     Node *ROOT;
 
     BinaryTree()
     {
-        ROOT = NULL; //Initializes ROOT to NULL
+        ROOT = NULL; // Initializing ROOT to null
     }
 
-    //insert a node in the binary search tree
-    void insert(string element)
-    {
-        Node *newNode = new Node(element, NULL, NULL); //Creates a new node
-
-        newNode->info = element;
-        newNode->leftchild = NULL;
-        newNode->rightchild = NULL;
-
-        Node *parent = NULL;
-        Node *currentNode = NULL;
-
-        search(element, parent, currentNode); //Searches for the element in the tree
-
-        if (parent == NULL)
-        {
-            ROOT = newNode;
-            return;
-        }
-        if (element < parent->info)
-        {
-            parent->leftchild = newNode;
-        }
-        else if (element > parent->info)
-        {
-            parent->rightchild = newNode;
-        }
-    }
-    
-    void search(string element, Node *&parent, Node *&currentNode)
+    // This function searches the current node of the specified node
+    // as well as the current node of its parent
+    void search(string element, Node* &parent, Node *&currentNode)
     {
         currentNode = ROOT;
         parent = NULL;
 
-        while ((currentNode != NULL && currentNode->info != element))
+        while ((currentNode != NULL) && (currentNode->info != element))
         {
             parent = currentNode;
 
@@ -73,9 +46,39 @@ public:
         }
     }
 
+    // Insert a node in the binary search tree
+    void insert(string element)
+    {
+        Node *newNode = new Node(element, NULL, NULL);
+
+        newNode->info = element;
+        newNode->leftchild = NULL;
+        newNode->rightchild = NULL;
+
+        Node *parent = NULL;
+        Node *currentNode = NULL;
+
+        search(element, parent, currentNode);
+
+        if (parent == NULL)
+        {
+            ROOT = newNode;
+            return;
+        }
+
+        if (element < parent->info)
+        {
+            parent->leftchild = newNode;
+        }
+        else if (element > parent->info)
+        {
+            parent->rightchild = newNode;
+        }
+    }
+
     void inorder(Node *ptr)
     {
-        if (ROOT=NULL)
+        if (ROOT == NULL)
         {
             cout << "Tree is empty" << endl;
             return;
@@ -89,7 +92,7 @@ public:
         }
     }
 
-   void preorder(Node *ptr)
+    void preorder(Node *ptr)
     {
         if (ROOT == NULL)
         {
@@ -105,7 +108,7 @@ public:
         }
     }
 
-     void postorder(Node *ptr)
+    void postorder(Node *ptr)
     {
         // Performs the postorder traversal of the tree
         if (ROOT == NULL)
@@ -122,11 +125,12 @@ public:
         }
     }
 };
+
 int main()
 {
     BinaryTree obj;
 
-     while(true)
+    while(true)
     {
         cout << "1. Implement insert operation" << endl;
         cout << "2. Perform inorder traversal" << endl;
@@ -135,10 +139,10 @@ int main()
         cout << "5. Exit" << endl;
         cout << "\nEnter your choice (1-5): ";
 
-         char ch;
+        char ch;
         cin >> ch;
-
-         cout << endl;
+        
+        cout << endl;
 
         switch (ch)
         {
@@ -170,7 +174,7 @@ int main()
 
             case '5':
                 return 0;
-            
+
             default:
             {
                 cout << "Invalid option" << endl;

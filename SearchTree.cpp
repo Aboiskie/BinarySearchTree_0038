@@ -38,4 +38,6 @@ public:
         newNode->rightchild = NULL;
 
         Node *parent = NULL;
-        Node *currentNode = ROOT;
+        Node *currentNode = NULL;
+
+        search(element, parent, currentNode); //Searches for the element in the tree

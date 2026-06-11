@@ -11,9 +11,15 @@ public:
 
     //Constructor for the node class
     Node(string 1, Node *1, Node *r)
-    (
+    {
         info = 1;
         leftchild = 1;
         rightchild = r;
-    )
+    }
+};
+
+class BinaryTree
+
+public:
+    Node *root;
 
